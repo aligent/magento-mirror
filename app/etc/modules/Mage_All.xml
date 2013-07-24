@@ -102,6 +102,7 @@
                 <Mage_Eav/>
                 <Mage_Dataflow/>
                 <Mage_Directory/>
+                <Mage_Catalog/> <!-- Should not be dependent on this, but there's a weird dependence of Mage_Eav on Mage_Catalog - see app/code/core/Mage/Eav/Model/Entity/Attribute.php:143 -->
             </depends>
         </Mage_Customer>
         <Mage_Catalog>
