@@ -341,6 +341,9 @@ class Varien_Db_Adapter_Pdo_Mysql extends Zend_Db_Adapter_Pdo_Mysql implements V
             } catch (Exception $e) {
                 // Convert to PDOException to maintain backwards compatibility with usage of MySQL adapter
                 if ($e instanceof Zend_Db_Statement_Exception) {
+                    if (!$e->getPrevious() instanceof Exception) {
+                        throw $e;
+                    }
                     $e = $e->getPrevious();
                     if (!($e instanceof PDOException)) {
                         $e = new PDOException($e->getMessage(), $e->getCode());
